@@ -68,7 +68,7 @@ class App extends Component {
           )} />
         </main>
         <div className='container'>
-          <CookieCards />
+          <CookieCards user={user} />
         </div>
       </Fragment>
     )

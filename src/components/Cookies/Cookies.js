@@ -1,7 +1,7 @@
 import React from 'react'
-import cookieData from '../../data/cookieData'
+import purchases from '../../data/purchases'
 
-const cookiesJsx = cookieData.map(cookie => {
+const cookiesJsx = purchases.map(cookie => {
   return (
     <div key={cookie.id}>
       <div>

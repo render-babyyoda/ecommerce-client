@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const purchaseCreate = (user, cookieData) => {
+export const purchaseCreate = (user, purchases) => {
   return axios({
     url: apiUrl + '/purchases',
     method: 'POST',
@@ -10,6 +10,6 @@ export const purchaseCreate = (user, cookieData) => {
       'Authorization': `Bearer ${user.token}`
     },
     // send the cookie object as our data for creating a movie
-    data: { cookieData }
+    data: { purchases }
   })
 }
