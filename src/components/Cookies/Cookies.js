@@ -21,10 +21,10 @@ const cookiesJsx = cookieData.map(cookie => {
   )
 })
 
-const Cookies = () => (
-  <div>
-    {cookiesJsx}
-  </div>
-)
+// const Cookies = () => (
+//   <div>
+//     {cookiesJsx}
+//   </div>
+// )
 
-export default Cookies
+export default cookiesJsx
