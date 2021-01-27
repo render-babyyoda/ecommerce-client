@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import cookieData from '../../data/cookieData'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import { purchaseCreate } from '../../api/cookieCalls'
+// import { purchaseCreate } from '../../api/cookieCalls'
 
 const cardContainerLayout = {
   display: 'flex',
@@ -12,19 +12,21 @@ const cardContainerLayout = {
 }
 
 const CookieCards = props => {
-  const [name, setName] = useState('')
+  const [name, setName] = useState(null)
+  const [purchased, setPurchased] = useState(false)
+  const [purchaseCount, setPurchaseCount] = useState(0)
 
   // const { cookie } = this.state
-  const handleClick = (event) => {
-    const { user, match } = this.props
-
-    purchaseCreate(match.params.id, user)
-    console.log('purchased cookie!')
-    console.log('this is cookie data ', cookieData)
-    event.preventDefault()
-      .then(() => setName({ name }))
-      .catch(console.error)
-  }
+  // const handleClick = (event) => {
+  // const { user, match } = this.props
+  //
+  // purchaseCreate(match.params.id, user)
+  // console.log('purchased cookie!')
+  // console.log('this is cookie data ', cookieData)
+  // event.preventDefault()
+  //   .then(() => setName({ name }))
+  //   .catch(console.error)
+  // }
 
   const cookieCards = cookieData.map(cookie => {
     return (
@@ -33,7 +35,13 @@ const CookieCards = props => {
         <Card.Body>
           <Card.Title>{cookie.name}</Card.Title>
           <Card.Text>{cookie.description}</Card.Text>
-          <Button onClick={handleClick}>Purchase {cookie.name}</Button>
+          <Button onClick={() => {
+            setPurchaseCount(purchaseCount + 1)
+            setPurchased(true)
+            setName(cookie.name)
+            console.log('Purchased: ' + purchased)
+            console.log('Cookie name: ' + name)
+          }} >Purchase {cookie.name}</Button>
         </Card.Body>
       </Card>
     )
@@ -41,6 +49,7 @@ const CookieCards = props => {
   return (
     <div style={cardContainerLayout}>
       { cookieCards }
+      <p>Purchase Count is {purchaseCount}</p>
     </div>
   )
 }
