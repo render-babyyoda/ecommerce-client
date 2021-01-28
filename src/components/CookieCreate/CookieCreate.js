@@ -13,7 +13,7 @@ const cardContainerLayout = {
   flexFlow: 'row wrap'
 }
 
-class CookieCards extends Component {
+class CookieCreate extends Component {
   constructor (props) {
     super(props)
 
@@ -46,7 +46,6 @@ class CookieCards extends Component {
           owner: user._id
         })
       })
-      .then(console.log('This is the promise'))
       .catch(console.error)
   }
 
@@ -72,4 +71,4 @@ class CookieCards extends Component {
   }
 }
 
-export default withRouter(CookieCards)
+export default withRouter(CookieCreate)

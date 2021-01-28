@@ -9,7 +9,8 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-import CookieCards from './components/Cookies/CookieCards'
+import CookieCreate from './components/CookieCreate/CookieCreate'
+import CookieIndex from './components/CookieIndex/CookieIndex'
 
 class App extends Component {
   constructor (props) {
@@ -66,9 +67,12 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <Route user={user} exact path='/purchases' render={() => (
+            <CookieIndex msgAlert={this.msgAlert} user={user} />
+          )} />
         </main>
         <div className='container'>
-          <CookieCards user={user} />
+          <CookieCreate user={user} />
         </div>
       </Fragment>
     )
