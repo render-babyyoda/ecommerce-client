@@ -27,3 +27,14 @@ export const purchaseIndex = (user, purchases) => {
     // data: { purchases }
   })
 }
+
+export const purchaseUpdate = (user, purchases) => {
+  return axios({
+    url: apiUrl + '/purchases' + purchases.id,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    },
+    data: { purchases }
+  })
+}

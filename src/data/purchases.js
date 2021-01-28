@@ -4,7 +4,7 @@ const purchases = [
     name: 'Chocolate Chip',
     photo: 'https://www.handletheheat.com/wp-content/uploads/2018/02/BAKERY-STYLE-CHOCOLATE-CHIP-COOKIES-9-768x768.jpg',
     description: 'good',
-    price: 3.00,
+    price: 2.00,
     owner: ''
   },
   {
