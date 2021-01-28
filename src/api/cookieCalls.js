@@ -38,3 +38,14 @@ export const purchaseUpdate = (user, purchases) => {
     data: { purchases }
   })
 }
+
+export const purchaseShow = (id, user, purchases) => {
+  return axios({
+    url: apiUrl + '/purchases/' + id,
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    }
+    // data: { purchases }
+  })
+}

@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 // import Button from 'react-bootstrap/Button
 import messages from '../AutoDismissAlert/messages'
 import { Link } from 'react-router-dom'
-import { purchaseIndex, purchaseUpdate } from '../../api/cookieCalls'
+import { purchaseUpdate, purchaseIndex } from '../../api/cookieCalls'
 import Spinner from 'react-bootstrap/Spinner'
 
 class CookieIndex extends Component {
@@ -80,20 +80,11 @@ class CookieIndex extends Component {
 
     const cookiesJsx = purchases.map(purchase => (
       <Link to={`/purchases/${purchase._id}`} key={purchase.id}>
-        <form onSubmit={this.handleSubmit}>
-          <li>
+        <li>
             Cookie: {purchase.name}
-            <br />
+          <br />
             Price: {purchase.price}
-            <input
-              placeholder="Edit Price"
-              name="price-edit"
-              value={purchase.price}
-              onChange={this.handleChange}
-            />
-            <button type='submit'>submit</button>
-          </li>
-        </form>
+        </li>
       </Link>
     ))
 

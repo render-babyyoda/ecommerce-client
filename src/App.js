@@ -11,6 +11,7 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import CookieCreate from './components/CookieCreate/CookieCreate'
 import CookieIndex from './components/CookieIndex/CookieIndex'
+import CookieShow from './components/CookieShow/CookieShow'
 
 class App extends Component {
   constructor (props) {
@@ -69,6 +70,9 @@ class App extends Component {
           )} />
           <Route user={user} exact path='/purchases' render={() => (
             <CookieIndex msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route user={user} exact path='/purchases/:id' render={() => (
+            <CookieShow msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
         {/* Sign Up message goes here */}
