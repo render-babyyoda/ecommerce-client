@@ -71,9 +71,11 @@ class App extends Component {
             <CookieIndex msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
+        {/* Sign Up message goes here */}
         <div className='container'>
           <CookieCreate user={user} />
         </div>
+        {/* Cookie Delivery Message goes here */}
       </Fragment>
     )
   }

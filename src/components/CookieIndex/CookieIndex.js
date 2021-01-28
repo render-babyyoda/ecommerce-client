@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 // import purchases from '../../data/purchases'
 // import Card from 'react-bootstrap/Card'
 // import Button from 'react-bootstrap/Button
+import messages from '../AutoDismissAlert/messages'
 import { Link } from 'react-router-dom'
 import { purchaseIndex, purchaseUpdate } from '../../api/cookieCalls'
 import Spinner from 'react-bootstrap/Spinner'
@@ -23,14 +24,14 @@ class CookieIndex extends Component {
     purchaseIndex(user, purchases)
       .then(res => this.setState({ purchases: res.data.purchases }))
       .then(() => msgAlert({
-        heading: 'fetched films for fun',
-        message: 'do what u want with this',
+        heading: 'Past Purchases',
+        message: messages.purchaseIndexSuccess,
         variant: 'success'
       }))
       .catch(error => {
         msgAlert({
-          heading: 'failed to fetch films',
-          message: 'please refer to this error: ' + error.message,
+          heading: 'Failed to retrieve purchases',
+          message: messages.purchaseIndexFailure + error.message,
           variant: 'danger'
         })
       })
@@ -54,14 +55,14 @@ class CookieIndex extends Component {
         return res
       })
       .then(res => msgAlert({
-        heading: 'Created Movie Successfully',
-        message: `Movie has been created successfully. Now viewing ${res.data.movie.title}.`,
+        heading: 'Past Purchases',
+        message: messages.purchaseIndexSuccess,
         variant: 'success'
       }))
       .catch(error => {
         msgAlert({
-          heading: 'Failed to Create Movie',
-          message: 'Could not create movie with error: ' + error.message,
+          heading: 'Failed to retrieve purchases',
+          message: messages.purchaseIndexFailure + error.message,
           variant: 'danger'
         })
       })

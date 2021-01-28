@@ -6,6 +6,7 @@ import purchases from '../../data/purchases'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { purchaseCreate } from '../../api/cookieCalls'
+import messages from '../AutoDismissAlert/messages'
 
 const cardContainerLayout = {
   display: 'flex',
@@ -29,7 +30,7 @@ class CookieCreate extends Component {
 
   handleClick = event => {
     event.preventDefault()
-    const { user } = this.props
+    const { user, msgAlert } = this.props
     const cookieNum = event.target.dataset.cookieid
     // setPurchaseCount(purchaseCount + 1)
     // setPurchased(true)
@@ -46,13 +47,24 @@ class CookieCreate extends Component {
           owner: user._id
         })
       })
-      .catch(console.error)
+      .then(() => msgAlert({
+        heading: 'Successfully purchased',
+        message: messages.purchaseSuccess,
+        variant: 'success'
+      }))
+      .catch(error => {
+        msgAlert({
+          heading: 'Unable to purchase',
+          message: messages.purchaseFailure + error.message,
+          variant: 'danger'
+        })
+      })
   }
 
   cookieCards = purchases.map(cookie => {
     return (
       <Card key={cookie.id} style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={cookie.photo} />
+        <Card.Img variant="top" src={cookie.photo} style={{ height: '18rem' }} />
         <Card.Body>
           <Card.Title>{cookie.name}</Card.Title>
           <Card.Text>{cookie.description}</Card.Text>
