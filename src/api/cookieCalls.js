@@ -39,7 +39,7 @@ export const purchaseUpdate = (user, purchases) => {
   })
 }
 
-export const purchaseShow = (id, user, purchases) => {
+export const purchaseShow = (id, user) => {
   return axios({
     url: apiUrl + '/purchases/' + id,
     method: 'GET',

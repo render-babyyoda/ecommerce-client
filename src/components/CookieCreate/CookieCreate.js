@@ -24,7 +24,8 @@ class CookieCreate extends Component {
         purchased: false,
         price: 0,
         owner: null
-      }
+      },
+      createdId: null
     }
   }
 
@@ -32,8 +33,7 @@ class CookieCreate extends Component {
     event.preventDefault()
     const { user, msgAlert } = this.props
     const cookieNum = event.target.dataset.cookieid
-    // setPurchaseCount(purchaseCount + 1)
-    // setPurchased(true)
+
     console.log('This is user ', user)
     console.log('Cookies extraction ', purchases)
     // console.log('Purchased: ' + purchased)
@@ -44,9 +44,11 @@ class CookieCreate extends Component {
           name: purchases[cookieNum].name,
           purchased: true,
           price: purchases[cookieNum].price,
-          owner: user._id
+          owner: user._id,
+          createdId: res.data.purchases._id
         })
       })
+      // .then(res => console.log('This is res: ', res))
       .then(() => msgAlert({
         heading: 'Successfully purchased',
         message: messages.purchaseSuccess,
@@ -76,7 +78,7 @@ class CookieCreate extends Component {
 
   render () {
     return (
-      <div style={cardContainerLayout}>
+      <div id="cookie-catalog" style={cardContainerLayout}>
         { this.cookieCards }
       </div>
     )

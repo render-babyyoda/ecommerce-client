@@ -79,7 +79,7 @@ class CookieIndex extends Component {
     }
 
     const cookiesJsx = purchases.map(purchase => (
-      <Link to={`/purchases/${purchase._id}`} key={purchase.id}>
+      <Link to={`/purchases/${purchase._id}`} key={purchase._id}>
         <li>
             Cookie: {purchase.name}
           <br />

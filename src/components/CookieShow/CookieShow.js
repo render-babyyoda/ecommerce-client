@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import apiUrl from '../apiConfig'
-// import purchases from '../../data/purchases'
 // import Card from 'react-bootstrap/Card'
 // import Button from 'react-bootstrap/Button
 // import messages from '../AutoDismissAlert/messages'
@@ -22,15 +20,19 @@ class CookieShow extends Component {
     const { user, match, msgAlert } = this.props
 
     purchaseShow(match.params.id, user)
-      .then(res => this.setState({ purchase: res.data.purchase }))
+      .then(res => {
+        this.setState({ purchase: res.data.purchases })
+        return res
+      })
+      .then(res => console.log('This is res, ', res))
       .then(() => msgAlert({
-        heading: 'here is one',
+        heading: 'THIS SHOW WORKS',
         message: 'just the one here',
         variant: 'success'
       }))
       .catch(error => [
         msgAlert({
-          heading: 'show movie fail',
+          heading: 'show fail',
           message: 'cannot show u bc: ' + error.message,
           variant: 'danger'
         })
@@ -38,9 +40,9 @@ class CookieShow extends Component {
   }
 
   render () {
-    const { purchases } = this.state
+    const { purchase } = this.state
 
-    if (!purchases) {
+    if (!purchase) {
       return (
         <Spinner animation="border" role="status">
           <span className="sr-only">Loading...</span>
@@ -50,8 +52,8 @@ class CookieShow extends Component {
 
     return (
       <div>
-        <h3>{purchases.name}</h3>
-        <h4>price: {purchases.price}</h4>
+        <h3>{purchase.name}</h3>
+        <h4>price: {purchase.price}</h4>
         <button>delete purchase</button>
         <button>update purchase</button>
       </div>
