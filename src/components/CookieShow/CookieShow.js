@@ -27,13 +27,13 @@ class CookieShow extends Component {
       })
       .then(res => console.log('This is res, ', res))
       .then(() => msgAlert({
-        heading: 'THIS SHOW WORKS',
+        heading: 'here is your cookie',
         message: 'just the one here',
         variant: 'success'
       }))
       .catch(error => [
         msgAlert({
-          heading: 'show fail',
+          heading: 'no cookie for u',
           message: 'cannot show u bc: ' + error.message,
           variant: 'danger'
         })
