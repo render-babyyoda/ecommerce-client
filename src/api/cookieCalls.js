@@ -28,9 +28,9 @@ export const purchaseIndex = (user, purchases) => {
   })
 }
 
-export const purchaseUpdate = (user, purchases) => {
+export const purchaseUpdate = (id, purchases, user) => {
   return axios({
-    url: apiUrl + '/purchases' + purchases.id,
+    url: apiUrl + '/purchases/' + id,
     method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${user.token}`

@@ -37,10 +37,6 @@ class CookieIndex extends Component {
       })
   }
 
-  handleChange = event => this.setState({
-    [event.target.name]: event.target.value
-  })
-
   handleSubmit = event => {
     event.preventDefault()
     const { user, msgAlert } = this.props
