@@ -65,9 +65,9 @@ class CookieCreate extends Component {
 
   cookieCards = purchases.map(cookie => {
     return (
-      <Card key={cookie.id} style={{ width: '18rem' }}>
+      <Card key={cookie.id} style={{ width: '18rem', margin: '10px' }}>
         <Card.Img variant="top" src={cookie.photo} style={{ height: '18rem' }} />
-        <Card.Body>
+        <Card.Body id="card-body">
           <Card.Title>{cookie.name}</Card.Title>
           <Card.Text>{cookie.description}</Card.Text>
           <Button onClick={this.handleClick} data-cookieid={cookie.id} >Purchase {cookie.name}</Button>

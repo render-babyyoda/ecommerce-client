@@ -26,7 +26,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      ecommerce-client
+      cookieJar(<img id="cookie-jar" src="https://i.imgur.com/FzQjCw1.png" alt="cookieJar"/>)
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

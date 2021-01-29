@@ -1,1 +1,16 @@
+$primary: #f77f00;
+$background: #fff3b0;
+
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: $background;
+}
+
+#card-body {
+  background-color: #fcbf49;
+}
+
+#cookie-jar {
+  width: 35px;
+}

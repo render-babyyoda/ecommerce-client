@@ -54,7 +54,6 @@ class CookieShow extends Component {
       <div>
         <h3>{purchase.name}</h3>
         <h4>price: {purchase.price}</h4>
-        <button>delete purchase</button>
         <button>update purchase</button>
       </div>
     )
