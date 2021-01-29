@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import Card from 'react-bootstrap/Card'
-// import Button from 'react-bootstrap/Button
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 // import messages from '../AutoDismissAlert/messages'
 // import { Link } from 'react-router-dom'
 import { purchaseShow } from '../../api/cookieCalls'
@@ -52,12 +52,20 @@ class CookieShow extends Component {
 
     return (
       <div>
-        <h3>{purchase.name}</h3>
-        <h4>price: {purchase.price}</h4>
-        <button>update purchase</button>
+        <Card key={purchase.id} style={{ width: '18rem', margin: '10px' }}>
+          <Card.Body id="card-body">
+            <Card.Title>Purchase: {purchase.name}</Card.Title>
+            <Card.Text>Price: {purchase.price}</Card.Text>
+            <Button onClick={this.handleClick} data-cookieid={purchase.id}>Update Purchase</Button>
+          </Card.Body>
+        </Card>
       </div>
     )
   }
 }
 
 export default withRouter(CookieShow)
+
+// <h3>{purchase.name}</h3>
+// <h4>price: {purchase.price}</h4>
+// <button>update purchase</button>
