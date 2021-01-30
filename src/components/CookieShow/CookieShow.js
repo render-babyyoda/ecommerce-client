@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
+import { Redirect, Link, withRouter } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 // import messages from '../AutoDismissAlert/messages'
-// import { Link } from 'react-router-dom'
 import { purchaseShow, purchaseUpdate } from '../../api/cookieCalls'
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -73,7 +72,6 @@ class CookieShow extends Component {
 
   render () {
     const { purchase, updated } = this.state
-
     if (!purchase) {
       return (
         <Spinner animation="border" role="status">
@@ -92,7 +90,7 @@ class CookieShow extends Component {
         <Card key={purchase.id} style={{ width: '18rem', margin: '10px' }}>
           <Card.Body id="card-body">
             <Card.Title>
-            Purchase: {purchase.name}
+            Update Name
               <input
                 placeholder='Edit Name'
                 name='name'
@@ -101,7 +99,7 @@ class CookieShow extends Component {
               />
             </Card.Title>
             <Card.Text>
-            Price: {purchase.price}
+            Update Price
               <input
                 placeholder='Edit Price'
                 name='price'
@@ -113,6 +111,9 @@ class CookieShow extends Component {
               onClick={this.handleClick}
               data-cookieid={purchase.id}>
             Update Purchase
+            </Button>
+            <Button>
+              <Link to={'/purchases/notes'}>Add a note</Link>
             </Button>
           </Card.Body>
         </Card>
