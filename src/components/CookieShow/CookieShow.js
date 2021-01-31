@@ -113,7 +113,7 @@ class CookieShow extends Component {
             Update Purchase
             </Button>
             <Button>
-              <Link to={'/purchases/notes'}>Add a note</Link>
+              <Link id="index-note" to={`${purchase._id}/notes`}>Show Notes</Link>
             </Button>
           </Card.Body>
         </Card>

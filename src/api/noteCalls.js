@@ -1,6 +1,16 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+export const noteIndex = (user, id) => {
+  return axios({
+    url: apiUrl + id + '/notes',
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${user.token}`
+    }
+  })
+}
+
 export const noteCreate = (user, notes) => {
   return axios({
     url: apiUrl + '/notes',
@@ -12,24 +22,24 @@ export const noteCreate = (user, notes) => {
   })
 }
 
-export const purchaseUpdate = (id, purchases, user) => {
-  return axios({
-    url: apiUrl + '/purchases/' + id,
-    method: 'PATCH',
-    headers: {
-      'Authorization': `Bearer ${user.token}`
-    },
-    data: { purchases }
-  })
-}
-
-export const purchaseShow = (id, user) => {
-  return axios({
-    url: apiUrl + '/purchases/' + id,
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${user.token}`
-    }
-    // data: { purchases }
-  })
-}
+// export const purchaseUpdate = (id, purchases, user) => {
+//   return axios({
+//     url: apiUrl + '/purchases/' + id,
+//     method: 'PATCH',
+//     headers: {
+//       'Authorization': `Bearer ${user.token}`
+//     },
+//     data: { purchases }
+//   })
+// }
+//
+// export const purchaseShow = (id, user) => {
+//   return axios({
+//     url: apiUrl + '/purchases/' + id,
+//     method: 'GET',
+//     headers: {
+//       'Authorization': `Bearer ${user.token}`
+//     }
+//     // data: { purchases }
+//   })
+// }
