@@ -69,7 +69,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route user={user} exact path='/purchases' render={() => (
+          <AuthenticatedRoute user={user} exact path='/purchases' render={() => (
             <CookieIndex msgAlert={this.msgAlert} user={user} />
           )} />
           <Route user={user} exact path='/purchases/:id' render={() => (
@@ -77,9 +77,11 @@ class App extends Component {
           )} />
         </main>
         {/* Sign Up message goes here */}
-        <div className='container'>
-          <CookieCreate msgAlert={this.msgAlert} user={user} />
-        </div>
+        <Route user={user} exact path='/' render={() => (
+          <div className='container'>
+            <CookieCreate msgAlert={this.msgAlert} user={user} />
+          </div>
+        )} />
         <Route user={user} path='/:id/notes' render={() => (
           <NoteIndex msgAlert={this.msgAlert} user={user} />
         )} />

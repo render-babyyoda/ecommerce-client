@@ -24,15 +24,15 @@ class CookieShow extends Component {
         this.setState({ purchase: res.data.purchases })
         return res
       })
-      .then(res => console.log('This is res, ', res))
+      // .then(res => console.log('This is res, ', res))
       .then(() => msgAlert({
-        heading: 'here is your cookie',
+        heading: 'Here is your cookie',
         message: 'just the one here',
         variant: 'success'
       }))
       .catch(error => [
         msgAlert({
-          heading: 'no cookie for u',
+          heading: 'No cookie for u = (',
           message: 'cannot show u bc: ' + error.message,
           variant: 'danger'
         })
@@ -86,12 +86,13 @@ class CookieShow extends Component {
     }
 
     return (
-      <div>
-        <Card key={purchase.id} style={{ width: '18rem', margin: '10px' }}>
+      <div id="cookie-show-div">
+        <Card key={purchase.id} style={{ width: '20rem', margin: '10px' }}>
           <Card.Body id="card-body">
             <Card.Title>
             Update Name
               <input
+                style={{ margin: '10px' }}
                 placeholder='Edit Name'
                 name='name'
                 value={purchase.name}
@@ -101,6 +102,7 @@ class CookieShow extends Component {
             <Card.Text>
             Update Price
               <input
+                style={{ margin: '10px' }}
                 placeholder='Edit Price'
                 name='price'
                 value={purchase.price}
@@ -112,8 +114,9 @@ class CookieShow extends Component {
               data-cookieid={purchase.id}>
             Update Purchase
             </Button>
+            <hr/>
             <Button>
-              <Link id="index-note" to={`${purchase._id}/notes`}>Show Notes</Link>
+              <Link id="index-note" to={`${purchase._id}/notes`}>Reviews</Link>
             </Button>
           </Card.Body>
         </Card>

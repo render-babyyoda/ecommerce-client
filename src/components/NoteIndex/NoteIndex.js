@@ -15,9 +15,9 @@ class NoteIndex extends Component {
   }
   componentDidMount () {
     const { msgAlert, user, purchase } = this.props
-    console.log('this is purchase ', purchase)
+    // console.log('this is purchase ', purchase)
     noteIndex(user, purchase._id)
-      .then(res => console.log('this is Notesres ', res))
+      // .then(res => console.log('this is Notesres ', res))
       .then(res => this.setState({ notes: res.data.purchases.notes }))
       .then(() => msgAlert({
         heading: 'All Notes',
@@ -31,7 +31,7 @@ class NoteIndex extends Component {
           variant: 'danger'
         })
       })
-    console.log('we got this far')
+    // console.log('we got this far')
   }
   render () {
     const { notes, purchase } = this.state

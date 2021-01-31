@@ -24,7 +24,7 @@ class CookieIndex extends Component {
     purchaseIndex(user, purchases)
       .then(res => this.setState({ purchases: res.data.purchases }))
       .then(() => msgAlert({
-        heading: 'Past Purchases',
+        heading: 'Here are your past purchases',
         message: messages.purchaseIndexSuccess,
         variant: 'success'
       }))
@@ -86,7 +86,8 @@ class CookieIndex extends Component {
 
     return (
       <div>
-        <h3>purchases</h3>
+        <h3>Purchase History</h3>
+        <h5>Click on a purchase to view reviews or make edits</h5>
         <ol>
           {cookiesJsx}
         </ol>

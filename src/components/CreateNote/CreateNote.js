@@ -18,7 +18,7 @@ class CreateNote extends Component {
   }
 
   handleClick = (event) => {
-    console.log('You got to HandleClick')
+    // console.log('You got to HandleClick')
     event.preventDefault()
     const { user, msgAlert } = this.props
     const { note } = this.state
@@ -41,7 +41,7 @@ class CreateNote extends Component {
   }
 
   handleChange = event => {
-    console.log('You got to change')
+    // console.log('You got to change')
     event.persist()
     this.setState((state) => {
       return {

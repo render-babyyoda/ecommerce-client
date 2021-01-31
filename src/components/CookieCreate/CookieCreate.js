@@ -34,8 +34,8 @@ class CookieCreate extends Component {
     const { user, msgAlert } = this.props
     const cookieNum = event.target.dataset.cookieid
 
-    console.log('This is user ', user)
-    console.log('Cookies extraction ', purchases)
+    // console.log('This is user ', user)
+    // console.log('Cookies extraction ', purchases)
     // console.log('Purchased: ' + purchased)
     // console.log('Cookie name: ' + name)
     purchaseCreate(user, purchases[cookieNum])
@@ -50,13 +50,13 @@ class CookieCreate extends Component {
       })
       // .then(res => console.log('This is res: ', res))
       .then(() => msgAlert({
-        heading: 'Successfully purchased',
+        heading: 'Cookie purchased!',
         message: messages.purchaseSuccess,
         variant: 'success'
       }))
       .catch(error => {
         msgAlert({
-          heading: 'Unable to purchase',
+          heading: 'No cookie for you = (',
           message: messages.purchaseFailure + error.message,
           variant: 'danger'
         })
@@ -70,6 +70,7 @@ class CookieCreate extends Component {
         <Card.Body id="card-body">
           <Card.Title>{cookie.name}</Card.Title>
           <Card.Text>{cookie.description}</Card.Text>
+          <Card.Text>${cookie.price}</Card.Text>
           <Button onClick={this.handleClick} data-cookieid={cookie.id} >Purchase {cookie.name}</Button>
         </Card.Body>
       </Card>
@@ -78,8 +79,12 @@ class CookieCreate extends Component {
 
   render () {
     return (
-      <div id="cookie-catalog" style={cardContainerLayout}>
-        { this.cookieCards }
+      <div>
+        <h3>Purchase a cookie</h3>
+        <h5>Check out our awesome selection!</h5>
+        <div id="cookie-catalog" style={cardContainerLayout}>
+          { this.cookieCards }
+        </div>
       </div>
     )
   }
