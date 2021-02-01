@@ -38,7 +38,7 @@ as a user, I want to view my purchased items (index)
 as a user, i want to update my purchase (patch)
 - Version 2
 
-integrate strip https://github.com/stripe/react-stripe-js
+integrate stripe https://github.com/stripe/react-stripe-js
 https://www.pluralsight.com/guides/how-to-integrate-stripe-with-react
 ----------- REQUIREMENTS END HERE --------
 
@@ -50,6 +50,12 @@ as a user, I want to add purchase items in shopping card (post)
 - Version 4
 
 as an admin, i want to add items
+
+# Technologies Used
+* HTML/SCSS
+* JavaScript
+* Bootstrap
+* Axios
 
 # wireframe
 ![Imgur](https://imgur.com/bNCqZnz.png)
