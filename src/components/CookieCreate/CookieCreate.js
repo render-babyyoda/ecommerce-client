@@ -78,6 +78,12 @@ class CookieCreate extends Component {
   })
 
   render () {
+    // const { user } = this.state
+    // if (user) {
+    //   // redirect to the purchases index page
+    //   return <Redirect to ={'/home'} />
+    // }
+
     return (
       <div>
         <h3>Purchase a cookie</h3>

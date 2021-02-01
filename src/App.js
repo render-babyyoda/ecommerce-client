@@ -12,7 +12,8 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 import CookieCreate from './components/CookieCreate/CookieCreate'
 import CookieIndex from './components/CookieIndex/CookieIndex'
 import CookieShow from './components/CookieShow/CookieShow'
-import NoteIndex from './components/NoteIndex/NoteIndex'
+// import NoteIndex from './components/NoteIndex/NoteIndex'
+import UnAuthHomepage from './components/UnAuthHomepage/UnAuthHomepage'
 
 class App extends Component {
   constructor (props) {
@@ -77,14 +78,19 @@ class App extends Component {
           )} />
         </main>
         {/* Sign Up message goes here */}
-        <Route user={user} exact path='/' render={() => (
+        <AuthenticatedRoute user={user} path='/home' render={() => (
           <div className='container'>
             <CookieCreate msgAlert={this.msgAlert} user={user} />
           </div>
         )} />
-        <Route user={user} path='/:id/notes' render={() => (
+        <Route user={user} exact path='/' render={() => (
+          <UnAuthHomepage user={user} />
+        )} />
+        {/*
+          <Route user={user} path='/:id/notes' render={() => (
           <NoteIndex msgAlert={this.msgAlert} user={user} />
         )} />
+          */}
         {/* Cookie Delivery Message goes here */}
       </Fragment>
     )
