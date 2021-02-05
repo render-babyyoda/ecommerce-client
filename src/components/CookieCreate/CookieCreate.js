@@ -7,6 +7,12 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { purchaseCreate } from '../../api/cookieCalls'
 import messages from '../AutoDismissAlert/messages'
+// import { Elements } from '@stripe/react-stripe-js'
+// import { loadStripe } from '@stripe/stripe-js'
+// import CheckoutForm from './CheckoutForm/CheckoutForm'
+import StripeCheckout from 'react-stripe-checkout'
+
+// const stripePromise = loadStripe('pk_test_51IHMdiGycoFI2vKg153aSQWh5vqeQeJECeHOJrfezr3jSrzQb7F7V9d6zHhIdX84yR63UC4EeSZqOftZXoQSvYdJ00qveVEqe7')
 
 const cardContainerLayout = {
   display: 'flex',
@@ -64,6 +70,10 @@ class CookieCreate extends Component {
   }
 
   cookieCards = purchases.map(cookie => {
+    function handleToken (token, addresses, cookie) {
+      console.log({ token, addresses, cookie })
+    }
+
     return (
       <Card key={cookie.id} style={{ width: '18rem', margin: '10px' }}>
         <Card.Img variant="top" src={cookie.photo} style={{ height: '18rem' }} />
@@ -72,6 +82,17 @@ class CookieCreate extends Component {
           <Card.Text>{cookie.description}</Card.Text>
           <Card.Text>${cookie.price}</Card.Text>
           <Button onClick={this.handleClick} data-cookieid={cookie.id} >Purchase {cookie.name}</Button>
+          <StripeCheckout
+            stripeKey='pk_test_51IHMdiGycoFI2vKg153aSQWh5vqeQeJECeHOJrfezr3jSrzQb7F7V9d6zHhIdX84yR63UC4EeSZqOftZXoQSvYdJ00qveVEqe7'
+            token={handleToken}
+            billingAddress
+            shippingAddress
+            amount={cookie.price * 100}
+            name={cookie.name}
+          />
+          {/* // <Elements stripe={stripePromise}>
+          //   <CheckoutForm />
+          // </Elements> */}
         </Card.Body>
       </Card>
     )
