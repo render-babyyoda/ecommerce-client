@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import axios from 'axios'
+import axios from 'axios'
 // import apiUrl from '../apiConfig'
 import purchases from '../../data/purchases'
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 import { purchaseCreate } from '../../api/cookieCalls'
 import messages from '../AutoDismissAlert/messages'
 // import { Elements } from '@stripe/react-stripe-js'
 // import { loadStripe } from '@stripe/stripe-js'
 // import CheckoutForm from './CheckoutForm/CheckoutForm'
 import StripeCheckout from 'react-stripe-checkout'
+import { toast } from 'react-toastify'
+
+toast.configure()
 
 // const stripePromise = loadStripe('pk_test_51IHMdiGycoFI2vKg153aSQWh5vqeQeJECeHOJrfezr3jSrzQb7F7V9d6zHhIdX84yR63UC4EeSZqOftZXoQSvYdJ00qveVEqe7')
 
@@ -40,10 +43,8 @@ class CookieCreate extends Component {
     const { user, msgAlert } = this.props
     const cookieNum = event.target.dataset.cookieid
 
-    // console.log('This is user ', user)
+    console.log('This is user ', user)
     // console.log('Cookies extraction ', purchases)
-    // console.log('Purchased: ' + purchased)
-    // console.log('Cookie name: ' + name)
     purchaseCreate(user, purchases[cookieNum])
       .then(res => {
         this.setState({
@@ -70,8 +71,21 @@ class CookieCreate extends Component {
   }
 
   cookieCards = purchases.map(cookie => {
-    function handleToken (token, addresses, cookie) {
-      console.log({ token, addresses, cookie })
+    async function handleToken (token) {
+      // console.log({ token })
+      const response = await axios.post('http://localhost:4741/checkout', {
+        token,
+        cookie
+      })
+      console.log('This is response data: ', response.data)
+      const { status } = response.data
+      if (status === 'success') {
+        toast('Success! Check email for details',
+          { type: 'success' })
+      } else {
+        toast('Something went wrong. Please try again.',
+          { type: 'error' })
+      }
     }
 
     return (
@@ -81,7 +95,7 @@ class CookieCreate extends Component {
           <Card.Title>{cookie.name}</Card.Title>
           <Card.Text>{cookie.description}</Card.Text>
           <Card.Text>${cookie.price}</Card.Text>
-          <Button onClick={this.handleClick} data-cookieid={cookie.id} >Purchase {cookie.name}</Button>
+          {/* }<Button onClick={this.handleClick} data-cookieid={cookie.id} >Purchase {cookie.name}</Button> */}
           <StripeCheckout
             stripeKey='pk_test_51IHMdiGycoFI2vKg153aSQWh5vqeQeJECeHOJrfezr3jSrzQb7F7V9d6zHhIdX84yR63UC4EeSZqOftZXoQSvYdJ00qveVEqe7'
             token={handleToken}
@@ -89,6 +103,7 @@ class CookieCreate extends Component {
             shippingAddress
             amount={cookie.price * 100}
             name={cookie.name}
+            // onClick={this.handleClick}
           />
           {/* // <Elements stripe={stripePromise}>
           //   <CheckoutForm />

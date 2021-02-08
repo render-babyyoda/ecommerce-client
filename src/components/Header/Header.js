@@ -6,8 +6,8 @@ const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#purchases">View Purchases</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
     <Nav.Link href="#home">Home</Nav.Link>
+    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>
 )
 
@@ -25,7 +25,7 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+    <Navbar.Brand href="#home">
       cookieJar(<img id="cookie-jar" src="https://i.imgur.com/FzQjCw1.png" alt="cookieJar"/>)
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
