@@ -38,20 +38,6 @@ class CookieCreate extends Component {
       createdId: null
     }
   }
-  //
-  // handleClick = () => {
-  //   const { cookie } = this.props
-  //   const cookieNum = cookie.id
-  //
-  //   purchaseCreate(cookieNum)
-  //     .then(res => {
-  //       this.setState({
-  //         name: cookie.name,
-  //         price: cookie.price
-  //       })
-  //     })
-  //     .catch()
-  // }
 
   handleClick = event => {
     // event.preventDefault()
@@ -67,7 +53,8 @@ class CookieCreate extends Component {
           purchased: true,
           price: purchases[cookieNum].price,
           owner: user._id,
-          createdId: res.data.purchases._id
+          createdId: res.data.purchases._id,
+          status: !this.status
         })
       })
       // .then(res => console.log('This is res: ', res))
@@ -115,7 +102,7 @@ class CookieCreate extends Component {
           <Card.Text>{cookie.description}</Card.Text>
           <Card.Text>${cookie.price}</Card.Text>
           <Button onClick={this.handleClick} data-cookieid={cookie.id} >Purchase {cookie.name}</Button>
-          <StripeCheckout
+          { this.status ? <StripeCheckout
             stripeKey='pk_test_51IHMdiGycoFI2vKg153aSQWh5vqeQeJECeHOJrfezr3jSrzQb7F7V9d6zHhIdX84yR63UC4EeSZqOftZXoQSvYdJ00qveVEqe7'
             token={handleToken}
             billingAddress
@@ -124,6 +111,7 @@ class CookieCreate extends Component {
             name={cookie.name}
             // opened={this.handleClick}
           />
+            : null}
           {/* // <Elements stripe={stripePromise}>
           //   <CheckoutForm />
           // </Elements> */}
@@ -133,12 +121,12 @@ class CookieCreate extends Component {
   })
 
   render () {
-    const { purchase } = this.state
-    if (purchase) {
-      return (
-        <StripeCheckout />
-      )
-    }
+    // const { purchased } = this.state
+    // if (purchase) {
+    //   return (
+    //     <StripeCheckout />
+    //   )
+    // }
 
     return (
       <div>
