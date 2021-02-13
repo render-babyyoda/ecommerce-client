@@ -4,12 +4,16 @@ Our team set out to create an ecommerce website that delivers cookies straight t
 # Links
 Backend Repo
 - https://github.com/render-babyyoda/ecommerce-backend
+
 Deployed Backend
 - https://intense-mesa-95377.herokuapp.com/
+
 Deployed Client
 - https://render-babyyoda.github.io/ecommerce-client/#/
+
 Stripe API
 - https://github.com/stripe/react-stripe-js
+
 Stripe Checkout Component
 - https://github.com/azmenak/react-stripe-checkout
 
