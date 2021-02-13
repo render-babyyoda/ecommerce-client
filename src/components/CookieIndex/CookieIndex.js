@@ -1,9 +1,4 @@
 import React, { Component } from 'react'
-// import { withRouter } from 'react-router-dom'
-// import apiUrl from '../apiConfig'
-// import purchases from '../../data/purchases'
-// import Card from 'react-bootstrap/Card'
-// import Button from 'react-bootstrap/Button
 import messages from '../AutoDismissAlert/messages'
 import { Link } from 'react-router-dom'
 import { purchaseUpdate, purchaseIndex } from '../../api/cookieCalls'
@@ -41,13 +36,9 @@ class CookieIndex extends Component {
     event.preventDefault()
     const { user, msgAlert } = this.props
     const { purchases } = this.state
-    // create a movie, pass it the movie data and the user for its token
     purchaseUpdate(user, purchases)
-      // set the createdId to the id of the movie we just created
-      // .then(res => this.setState({ createdId: res.data.movie._id }))
       .then(res => {
         this.setState({ purchases: res.data.purchases })
-        // pass the response to the next .then so we can show the title
         return res
       })
       .then(res => msgAlert({

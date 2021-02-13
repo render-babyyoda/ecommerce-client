@@ -1,5 +1,5 @@
 # cookieJar
-Our team set out to create an ecommerce website that delivers cookies straight to your door. We created a site where you can buy & view your purchases all in one place. Our next step is to integrate Stripe and allow user's to write reviews on their favorite cookies.
+Our team set out to create an ecommerce website that delivers cookies straight to your door. We created a site where you can buy & view your purchases all in one place. This application uses the Stripe API to verify your credit card and billing/shipping information. Enjoy!
 
 # Links
 Backend Repo
@@ -8,9 +8,15 @@ Deployed Backend
 - https://intense-mesa-95377.herokuapp.com/
 Deployed Client
 - https://render-babyyoda.github.io/ecommerce-client/#/
+Stripe API
+- https://github.com/stripe/react-stripe-js
+Stripe Checkout Component
+- https://github.com/azmenak/react-stripe-checkout
 
 # Planning Process and Problem-Solving Strategy
-Wireframes and user stories were created and then translated over to our kanban board to schedule our tasks. On day one we hard coded the data for our cookies and displayed them to the homepage. After getting the resource data to show in React Cards, we added the purchase (POST) functionality to create a purchase. Once backend routes were complete, axios calls were added to the frontend and the layout started to take shape. After initial CRUD functionality, we successfully got an index of our resources to show with edit functions. Finally, we styled the app with a warm color scheme and cookie logos.
+Wireframes and user stories were created and then translated over to our kanban board to schedule our tasks. On day one we hard coded the data for our cookies and displayed them to the homepage. After getting the resource data to show in React Cards, we added the purchase (POST) functionality to create a purchase. Once backend routes were complete, axios calls were added to the frontend and the layout started to take shape. After initial CRUD functionality, we successfully got an index of our resources to show with edit functions.
+
+We began the second version to utilize the Stripe API to take credit card information on February 1st, 2021 and completed it on February 13th, 2021.
 
 # Team Culture Code
 Communicate branches & when to pull new information

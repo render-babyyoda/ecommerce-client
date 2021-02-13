@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect, Link, withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 // import messages from '../AutoDismissAlert/messages'
@@ -24,7 +24,6 @@ class CookieShow extends Component {
         this.setState({ purchase: res.data.purchases })
         return res
       })
-      // .then(res => console.log('This is res, ', res))
       .then(() => msgAlert({
         heading: 'Here is your cookie',
         message: 'just the one here',
@@ -114,10 +113,10 @@ class CookieShow extends Component {
               data-cookieid={purchase.id}>
             Update Purchase
             </Button>
-            <hr/>
+            {/* }<hr/>
             <Button>
               <Link id="index-note" to={`${purchase._id}/notes`}>Reviews</Link>
-            </Button>
+            </Button> */}
           </Card.Body>
         </Card>
       </div>
@@ -126,7 +125,3 @@ class CookieShow extends Component {
 }
 
 export default withRouter(CookieShow)
-
-// <h3>{purchase.name}</h3>
-// <h4>price: {purchase.price}</h4>
-// <button>update purchase</button>

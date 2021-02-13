@@ -12,7 +12,6 @@ import ChangePassword from './components/ChangePassword/ChangePassword'
 import CookieCreate from './components/CookieCreate/CookieCreate'
 import CookieIndex from './components/CookieIndex/CookieIndex'
 import CookieShow from './components/CookieShow/CookieShow'
-import Checkout from './components/Checkout/Checkout'
 // import NoteIndex from './components/NoteIndex/NoteIndex'
 import UnAuthHomepage from './components/UnAuthHomepage/UnAuthHomepage'
 
@@ -76,9 +75,6 @@ class App extends Component {
           )} />
           <Route user={user} exact path='/purchases/:id' render={() => (
             <CookieShow msgAlert={this.msgAlert} user={user} />
-          )} />
-          <Route user={user} exact path='/checkout' render={() => (
-            <Checkout msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
         {/* Sign Up message goes here */}

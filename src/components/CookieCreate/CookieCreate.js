@@ -9,9 +9,6 @@ import { purchaseCreate } from '../../api/cookieCalls'
 import messages from '../AutoDismissAlert/messages'
 
 import StripeCheckout from 'react-stripe-checkout'
-import { toast } from 'react-toastify'
-
-toast.configure()
 
 const cardContainerLayout = {
   display: 'flex',
@@ -35,12 +32,8 @@ class CookieCreate extends Component {
   }
 
   handleClick = event => {
-    // event.preventDefault()
     const { user, msgAlert } = this.props
     const cookieNum = event.target.dataset.cookieid
-
-    console.log('This is user ', user)
-    // console.log('Cookies extraction ', purchases)
     purchaseCreate(user, purchases[cookieNum])
       .then(res => {
         this.setState({
@@ -51,11 +44,6 @@ class CookieCreate extends Component {
           createdId: res.data.purchases._id
         })
       })
-      .then(() => msgAlert({
-        heading: 'Cookie purchased!',
-        message: messages.purchaseSuccess,
-        variant: 'success'
-      }))
       .catch(error => {
         msgAlert({
           heading: 'No cookie for you = (',
@@ -66,23 +54,24 @@ class CookieCreate extends Component {
   }
 
   cookieCards = purchases.map(cookie => {
+    const { msgAlert } = this.props
     async function handleToken (token) {
-      // console.log({ token })
       await axios.post(apiUrl + '/checkout', {
         token,
         cookie
       })
-      // console.log('This is response data: ', response.data)
-      // const { status } = response.data
-      // this.setState({
-      //   status: true
-      // })
-      if (cookie) {
-        toast('Success! Check email for details',
-          { type: 'success' })
-      } else {
-        toast('Something went wrong. Please try again.',
-          { type: 'error' })
+      try {
+        msgAlert({
+          heading: 'Cookie purchased!',
+          message: messages.purchaseSuccess,
+          variant: 'success'
+        })
+      } catch (error) {
+        msgAlert({
+          heading: 'No cookie for you = (',
+          message: messages.purchaseFailure,
+          variant: 'danger'
+        })
       }
     }
 
