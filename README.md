@@ -65,6 +65,7 @@ https://www.pluralsight.com/guides/how-to-integrate-stripe-with-react
 as a user, I want to add item to shopping cart (patch)
 as a user, I want to remove item from shopping cart (patch/delete)
 as a user, I want to add purchase items in shopping card (post)
+
 - Version 4
 
 as an admin, i want to add items

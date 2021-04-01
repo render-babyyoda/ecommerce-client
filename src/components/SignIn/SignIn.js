@@ -51,6 +51,7 @@ class SignIn extends Component {
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           <h3>Sign In</h3>
+          <p>If you&apos;d like to test our app, please sign in with the email &quot;guest@guest.com&quot; and password &quot;guest&quot;.</p>
           <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>

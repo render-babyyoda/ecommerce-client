@@ -38,8 +38,8 @@ class UnAuthHomepage extends Component {
   render () {
     return (
       <div>
-        <h3>Purchase a cookie</h3>
-        <h5>Check out our awesome selection!</h5>
+        <h3 id="subheader">Purchase a cookie</h3>
+        <h5 id="subheader">Check out our awesome selection!</h5>
         <div id="cookie-catalog" style={cardContainerLayout}>
           { this.cookieCards }
         </div>
